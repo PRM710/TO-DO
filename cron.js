@@ -89,7 +89,7 @@ async function checkForNewTasksAndNotify({ manualTrigger = false } = {}) {
 }
 
 // every 5 minutes
-cron.schedule('*/5 * * * * *', async () => {
+cron.schedule('*/5 * * * *', async () => {
   console.log('[cron] Running at', new Date().toISOString());
   await checkForNewTasksAndNotify();
 });
