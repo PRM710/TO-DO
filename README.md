@@ -7,6 +7,14 @@ The backend is already deployed on AWS.
 ✅ JWT authentication enabled  
 ✅ Email notifications for newly created tasks
 
+👉 **Sample Frontend Repository**  
+Use this repo to test the backend using a simple UI:  
+https://github.com/PRM710/frontend_sample_for_todo.git  
+
+It already contains complete instructions to:
+- Install dependencies
+- Run locally
+- Automatically connect to the AWS backend (`http://16.16.206.12:3000`)
 ---
 
 ## ✅ ✅ Deployment URL (AWS Hosted)
