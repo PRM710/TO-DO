@@ -1,17 +1,16 @@
-// middleware/auth.js
+
 require("dotenv").config();
 const jwt = require("jsonwebtoken");
 
 module.exports = (req, res, next) => {
   try {
     const publicRoutes = [
-      "/",                // health
-      "/auth/login",      // public login
-      "/auth/register",   // public signup
-      "/cron/trigger",    // optional public
+      "/",                
+      "/auth/login",      
+      "/auth/register",  
+      "/cron/trigger",   
     ];
 
-    // ✅ Allow public routes
     if (publicRoutes.includes(req.path)) {
       return next();
     }
@@ -31,7 +30,7 @@ module.exports = (req, res, next) => {
 
     try {
       const decoded = jwt.verify(token, process.env.JWT_SECRET);
-      req.user = decoded; // attach user to request
+      req.user = decoded;
       next();
     } catch (err) {
       return res.status(403).json({ error: "Invalid or expired token" });
