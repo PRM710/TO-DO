@@ -110,17 +110,17 @@ CREATE DATABASE todo_db;
 Create `.env` in project root and add your own values:
 
 ```
-# ✅ Server
+# Server
 PORT=3000
 
-# ✅ PostgreSQL Database
+# PostgreSQL Database
 DATABASE_URL=postgresql://postgres:YOURPASS@localhost:5432/todo_db
 DB_SSL=false
 
-# ✅ Cron Job
+# Cron Job
 DISABLE_CRON=false
 
-# ✅ Gmail SMTP
+# Gmail SMTP
 SMTP_HOST=smtp.gmail.com
 SMTP_PORT=587
 SMTP_SECURE=false
