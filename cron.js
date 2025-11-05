@@ -1,9 +1,8 @@
-// cron.js
 const cron = require('node-cron');
 const db = require('./db');
 const nodemailer = require('nodemailer');
 
-// ✅ Send HTML Email
+//  Send HTML Email
 async function sendHTMLEmail(subject, tasks, to) {
   const transporter = nodemailer.createTransport({
     host: process.env.SMTP_HOST,
@@ -26,7 +25,7 @@ async function sendHTMLEmail(subject, tasks, to) {
     `
   ).join('');
 
-  // ✅ Beautiful HTML email
+  // HTML email
   const html = `
     <div style="font-family: Arial, sans-serif; background:#f2f2f7; padding:25px;">
       <div style="max-width:600px; background:white; margin:auto; padding:25px; border-radius:10px; border:1px solid #ddd;">
@@ -54,7 +53,7 @@ async function sendHTMLEmail(subject, tasks, to) {
     from: process.env.SMTP_FROM || process.env.SMTP_USER,
     to,
     subject,
-    html   // ✅ IMPORTANT — using HTML, not TEXT
+    html 
   });
 }
 
@@ -89,7 +88,7 @@ async function checkForNewTasksAndNotify({ manualTrigger = false } = {}) {
   }
 }
 
-// ✅ Cron every 5 minutes
+// every 5 minutes
 cron.schedule('*/5 * * * * *', async () => {
   console.log('[cron] Running at', new Date().toISOString());
   await checkForNewTasksAndNotify();
