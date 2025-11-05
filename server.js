@@ -1,28 +1,27 @@
-// server.js
 require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 
-const auth = require('./middleware/auth');         // ✅ JWT middleware
+const auth = require('./middleware/auth');         // JWT
 const tasksRouter = require('./routes/tasks');
-const authRoutes = require('./routes/auth');       // ✅ Token generator route
+const authRoutes = require('./routes/auth'); 
 const { checkForNewTasksAndNotify } = require('./cron');
 
 const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
-// ✅ Public auth endpoint (to generate JWT)
+
 app.use(authRoutes);
 
-// ✅ Protect all other routes with JWT
+
 app.use(auth);
 
-// ✅ Protected routes
+
 app.use('/tasks', tasksRouter);
 
-// ✅ Manual cron trigger
+
 app.post('/cron/trigger', async (req, res) => {
   try {
     const result = await checkForNewTasksAndNotify({ manualTrigger: true });
@@ -32,7 +31,6 @@ app.post('/cron/trigger', async (req, res) => {
   }
 });
 
-// ✅ Health check (public)
 app.get('/', (req, res) => res.send('To-Do API is alive'));
 
 const PORT = process.env.PORT || 3000;
