@@ -15,6 +15,8 @@ The backend is already deployed on AWS.
 Use this repo to test the backend using a simple UI:  
 https://github.com/PRM710/frontend_sample_for_todo.git  
 
+THIS IS THE LIVE FRONTEND LINK: https://frontend-sample-for-todo.vercel.app/
+
 It already contains complete instructions to:
 - Install dependencies
 - Run locally
